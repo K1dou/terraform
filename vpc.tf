@@ -4,7 +4,10 @@ resource "aws_vpc" "eks_vpc" {
 
   enable_dns_support   = true
   enable_dns_hostnames = true
-  tags = {
-    Name = "devocps-vpc"
-  }
+  tags = merge(
+    local.tags,
+    {
+      Name = "devocps-vpc"
+    }
+  )
 }
